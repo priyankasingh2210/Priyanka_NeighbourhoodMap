@@ -1,12 +1,14 @@
 'use strict';
-/*jshint strict:false */
-
-var map, resetMap;
+/*jshint -W097 */
+/* jshint -W034 */
 /*global ko*/
 /*global google*/
 /*globals $:false */
 /*jshint unused:false*/
 
+/*jshint strict:false */
+
+var map, resetMap;
 
 /* Hardcoding top 12 busiest railway stations in india - our data - model*/
 /** This list is from 
@@ -133,7 +135,7 @@ function googleError(){
 
 /* Initializing map, markers */
 function initMap() {
-
+    'use strict';
     var myLatlng = new google.maps.LatLng(28.615854,77.2186094);
     var mapOptions = {
         zoom: 6,
@@ -164,6 +166,7 @@ function initMap() {
 
 /* Controlling the visibility of marker based on the 'showIt' property */
 function setMapWithMarker() {
+    'use strict';
     for (var i = 0; i < railways.length; i++) {
         if(railways[i].showIt === true) {
             railways[i].locMarker.setMap(map);
@@ -175,6 +178,7 @@ function setMapWithMarker() {
 
 
 function makeWikkiCall(i, wikiUrl, location){
+    'use strict';
     var wikiRequestTimeout = setTimeout(function() {
         $('.show-error').html('ERROR: Failed to load wikipedia data - Railways details will not show up! Sorry for the inconvenience caused.');
     }, 5000);
@@ -183,6 +187,7 @@ function makeWikkiCall(i, wikiUrl, location){
         url: wikiUrl,
         dataType: "jsonp"
     }).done(function(response){
+        'use strict';
         var article = response[2][0];
         var pageLink = response[3][0];
         location[i].contentString =
@@ -196,7 +201,9 @@ function makeWikkiCall(i, wikiUrl, location){
 
 
 function getInfoWindow(marker,location, infowindow){
+    'use strict';
     return function(){
+        'use strict';
         marker.setAnimation(google.maps.Animation.BOUNCE);
                 setTimeout(function() {
                     marker.setAnimation(null);
@@ -209,7 +216,9 @@ function getInfoWindow(marker,location, infowindow){
 }
 
 function getPopupWindow(marker,location, infowindow){
+    'use strict';
     return function(){
+        'use strict';
         marker.setAnimation(google.maps.Animation.BOUNCE);
                 setTimeout(function() {
                     marker.setAnimation(null);
@@ -223,6 +232,7 @@ function getPopupWindow(marker,location, infowindow){
 
 /* Setting markers on map and attaching content to each of their info windows */
 function setMarkers(location) {
+    'use strict';
     var img = 'img/trains32.png';
     for (var i = 0; i < location.length; i++) {
         location[i].locMarker = new google.maps.Marker({
@@ -254,6 +264,7 @@ function setMarkers(location) {
 
 /* Function for toggling the menu */
 function slideToggle() {
+    'use strict';
     /*jshint validthis:true */
     $(this).toggleClass('toggled');
     $( "#listing" ).toggle( "slow", function() {
@@ -263,13 +274,16 @@ function slideToggle() {
 
 /* Our view model */
 function viewModel() {
+    'use strict';
     /*jshint validthis:true */
     var self = this;
     /*jshint validthis:true */
     this.locMarkerSearch = ko.observable('');
     ko.computed(function() {
+        'use strict';
         var search = self.locMarkerSearch().toLowerCase();
         return ko.utils.arrayFilter(railways, function(railways) {
+            'use strict';
             if (railways.title.toLowerCase().indexOf(search) >= 0) {
                 railways.showIt = true;
                 return railways.visible(true);
@@ -286,6 +300,7 @@ function viewModel() {
 ko.applyBindings(new viewModel());
 
 $(window).resize(function(){
+    'use strict';
     var windowWidth = $(window).width();
     if (windowWidth > 768) {
         $( "#listing" ).slideDown( "slow", function() {
