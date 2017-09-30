@@ -1,8 +1,12 @@
+'use strict';
+
+/*global ko*/
 
 /* Hardcoding top 12 busiest railway stations in india - our data - model*/
 /** This list is from 
 http://www.walkthroughindia.com/walkthroughs/trains/top-12-busiest-railway-stations-india/ */
 
+/*jshint unused:false*/
 var railways = [
     {
         title: "Howrah Junction Railway Station",
