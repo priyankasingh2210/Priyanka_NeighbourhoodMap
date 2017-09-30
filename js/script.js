@@ -5,6 +5,7 @@ var map, resetMap;
 /*global google*/
 /*globals $:false */
 /*jshint unused:false*/
+/* global railways */
 
 
 /* Function that alert error if google map load fails */
@@ -120,7 +121,7 @@ function setMarkers(location) {
         makeWikkiCall(i, wikiUrl, location);
 
         /* info window initialization and setting content to each marker's info window */
-        var infowindow = new google.maps.InfoWindow({});
+        var infowindow = new google.maps.InfoWindow({maxWidth: 200});
 
         var setInfoWindow = getInfoWindow(location[i].locMarker,location[i], infowindow);
         new google.maps.event.addListener(location[i].locMarker, 'click', setInfoWindow);
