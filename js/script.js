@@ -1,4 +1,5 @@
 'use strict';
+/*jshint strict:false */
 
 var map, resetMap;
 /*global ko*/
