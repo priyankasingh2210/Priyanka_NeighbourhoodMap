@@ -72,7 +72,7 @@ function makeWikkiCall(i, wikiUrl, location){
         '<p><a href=\"'+pageLink+'\" target=\"_blank\"> Wikipedia link </a><br></p></p><p>Source: Wikipedia</p>';
         clearTimeout(wikiRequestTimeout);
     }).error(function(){
-        location[i].contentString = "wiki network call failed"
+        location[i].contentString = "wiki network call failed";
     });
 }
 
